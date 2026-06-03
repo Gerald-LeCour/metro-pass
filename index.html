@@ -8,20 +8,25 @@
 </head>
 <body>
   <main class="ticket">
-    <h1>City Transit</h1>
+    <h1>Metro Transit</h1>
     <p class="subtitle">Show operator your ticket</p>
 
     <div class="logo-wrap">
-      <div class="pulse pulse-gray"></div>
-      <div class="pulse pulse-orange"></div>
-      <div class="logo">go<br><span>to</span></div>
+  <div class="pulse pulse-gray"></div>
+  <div class="pulse pulse-orange"></div>
+
+  <div class="logo">
+    <img src="logo.png" alt="Go To Logo">
+  </div>
+</div>
+</div>
     </div>
 
     <div id="time" class="time">--:--:-- --</div>
 
     <section class="card">
       <h2>Adult All-Day</h2>
-      <p>Minneapolis / St. Paul Metro Area</p>
+      <p>Minneapolis/ St. Paul Metro Area</p>
       <strong id="expires">Expires --</strong>
     </section>
   </main>
@@ -55,5 +60,30 @@
     updateTicket();
     setInterval(updateTicket, 1000);
   </script>
+  
+  <script>
+  const orangeCircle = document.querySelector(".pulse-orange");
+  const grayCircle = document.querySelector(".pulse-gray");
+
+  function randomPulse() {
+    const orangeScale = 1.0 + Math.random() * 0.85;
+    const grayScale = 0.9 + Math.random() * 0.35;
+
+    const orangeSpeed = 500 + Math.random() * 900;
+    const graySpeed = 500 + Math.random() * 1000;
+
+    orangeCircle.style.transition = `transform ${orangeSpeed}ms ease-in-out`;
+    grayCircle.style.transition = `transform ${graySpeed}ms ease-in-out`;
+
+    orangeCircle.style.transform = `scale(${orangeScale})`;
+    grayCircle.style.transform = `scale(${grayScale})`;
+
+    const nextPulse = 550 + Math.random() * 900;
+    setTimeout(randomPulse, nextPulse);
+  }
+
+  randomPulse();
+</script>
+
 </body>
 </html>
